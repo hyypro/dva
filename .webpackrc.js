@@ -1,9 +1,13 @@
 export default {
   alias: {
-    '@': `${__dirname}/src`
+    '@': `${__dirname}/src`,
+    '@@': `${__dirname}/src/components`,
   },
   disableCSSModules: true,
   publicPath: '/',
+  extraBabelPlugins: [
+    ['import', { 'libraryName': 'antd', 'libraryDirectory': 'es', 'style': 'css' }]
+  ],
   proxy: {
     '/aps': {
       target: 'https://api.baxiaobu.com',
