@@ -32,7 +32,7 @@ export default class Home extends Component {
     } else {
       this.props.dispatch({
         type: 'home/addList',
-        payload: {...value}
+        payload: value
       }) 
     }
     this.setState({
@@ -74,7 +74,7 @@ export default class Home extends Component {
       id: record.id
     })
   }
-  
+
   render() {
     const columns = [
             {
