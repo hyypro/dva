@@ -17,7 +17,7 @@ class ModelForm extends Component {
   }
   
   render() {
-    const { visible, id } = this.props
+    const { visible, id, editData } = this.props
     return (
       <div>
         <Modal
@@ -27,7 +27,7 @@ class ModelForm extends Component {
           footer={null}
           onCancel={this.handleCancel}
         >
-        <Form onFinish={this.onFinish}  initialValues={this.props.editData}>
+        <Form onFinish={this.onFinish}  initialValues={editData}>
             <Form.Item
               label="姓名"
               name="name"
