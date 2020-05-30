@@ -43,7 +43,7 @@ export default {
 
     //删除
     *deleList({ payload }, { call, put }) {
-      yield call(dele, {id: payload})
+      yield call(dele, { id: payload })
       yield put({
         type: 'getList',
       })
@@ -59,12 +59,12 @@ export default {
 
     //保存修改
     *update({ payload }, { call, put }) {
-      yield call(updata, payload)
-      yield put({
-        type: 'getList',
-      })
-    }
-  },
+        yield call(updata, payload)
+        yield put({
+          type: 'getList',
+        })
+      }
+    },
   
   subscriptions: {
     Sym ({ history, dispatch }) {
