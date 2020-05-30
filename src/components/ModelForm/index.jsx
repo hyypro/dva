@@ -27,7 +27,7 @@ class ModelForm extends Component {
           footer={null}
           onCancel={this.handleCancel}
         >
-        <Form onFinish={this.onFinish}  >
+        <Form onFinish={this.onFinish}  initialValues={this.props.editData}>
             <Form.Item
               label="姓名"
               name="name"

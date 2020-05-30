@@ -1,4 +1,4 @@
-import { findUser, add, dele } from '@/services/home'
+import { findUser, add, dele, updata } from '@/services/home'
 
 const { pathToRegexp } = require('path-to-regexp')
 
@@ -27,7 +27,7 @@ export default {
   effects: {
     
     //获取默认数据
-    *getList({ payload }, { call, put, select }) {
+    *getList({ payload }, { call, put }) {
   
       const data = yield call(findUser)
     
@@ -39,7 +39,7 @@ export default {
     },
 
     //添加
-    *addList({ payload }, { call, put, select }) {
+    *addList({ payload }, { call, put }) {
 
       yield call(add, payload)
      
@@ -49,8 +49,8 @@ export default {
     },
 
     //删除
-    *deleList({ payload }, { call, put, select }) {
-
+    *deleList({ payload }, { call, put }) {
+   
       yield call(dele, {id: payload})
     
       yield put({
@@ -59,10 +59,21 @@ export default {
     },
 
     //修改表单回填
-    *editData({ payload }, { call, put, select }) {
+    *editData({ payload }, { put }) {
+
       yield put({
         type: 'getEdid',
         payload
+      })
+    },
+
+    //保存修改
+    *update({ payload }, { call, put }) {
+      
+      yield call(updata, payload)
+
+      yield put({
+        type: 'getList',
       })
     }
   },
