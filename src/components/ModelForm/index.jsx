@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'dva'
 import { Form, Input, Modal, Button } from 'antd'
 
-
 export default @connect(({ home }) => ({
   editData: home.editData
 }))

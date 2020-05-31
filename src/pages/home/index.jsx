@@ -74,38 +74,38 @@ export default class Home extends Component {
 
   render() {
     const columns = [
-            {
-              title: '姓名',
-              dataIndex: 'name',
-              key: 'name',
-              render: text => <a>{text}</a>,
-            },
-            {
-              title: '年龄',
-              dataIndex: 'age',
-              key: 'age',
-            },
-            {
-              title: '地址',
-              dataIndex: 'address',
-              key: 'address',
-            },
-            {
-              title: 'Action',
-              dataIndex: '',
-              key: 'x',
-              render: record => {
-                return (
-                  <div>
-                    <Button onClick={() => this.Update(record)}>Update</Button>
-                    <Popconfirm title="Sure to delete?" onConfirm={() => this.Delete(record.id)}>
-                      <Button>Delete</Button>
-                    </Popconfirm>
-                  </div>
-                )
-              },
-            }
-          ]
+      {
+        title: '姓名',
+        dataIndex: 'name',
+        key: 'name',
+        render: text => <a>{text}</a>,
+      },
+      {
+        title: '年龄',
+        dataIndex: 'age',
+        key: 'age',
+      },
+      {
+        title: '地址',
+        dataIndex: 'address',
+        key: 'address',
+      },
+      {
+        title: 'Action',
+        dataIndex: '',
+        key: 'x',
+        render: record => {
+          return (
+            <div>
+              <Button onClick={() => this.Update(record)}>Update</Button>
+              <Popconfirm title="Sure to delete?" onConfirm={() => this.Delete(record.id)}>
+                <Button>Delete</Button>
+              </Popconfirm>
+            </div>
+          )
+        },
+      }
+    ]
     const { data } = this.props
     const { visible, id } = this.state
     return (
