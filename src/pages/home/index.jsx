@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
-import { Table, Button } from 'antd'
+import { Table, Button, Popconfirm } from 'antd'
 import ModelForm from '@@/ModelForm'
 
 @connect(({ home }) => ({
@@ -98,7 +98,9 @@ export default class Home extends Component {
                 return (
                   <div>
                     <Button onClick={() => this.Update(record)}>Update</Button>
-                    <Button onClick={() => this.Delete(record.id)}>Delete</Button>
+                    <Popconfirm title="Sure to delete?" onConfirm={() => this.Delete(record.id)}>
+                      <Button>Delete</Button>
+                    </Popconfirm>
                   </div>
                 )
               },
