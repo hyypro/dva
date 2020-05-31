@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'dva'
-import { Table, Button, Popconfirm } from 'antd'
+import { Table, Button } from 'antd'
 import ModelForm from '@@/ModelForm'
 
 @connect(({ home }) => ({
@@ -13,15 +13,13 @@ export default class Home extends Component {
     id: ''
   }
   
-  //展示模态框
   showModal = () => {
     this.setState({
       visible: true,
       id: ''
     })
   }
-  
-  //点击保存
+
   handleOk = value => {
     const { id } = this.state
     if (id) {
@@ -41,8 +39,7 @@ export default class Home extends Component {
     })
     
   }
-  
-  //点击取消
+
   handleCancel = () => {
     this.setState({
       visible: false,
@@ -54,16 +51,14 @@ export default class Home extends Component {
     })
     
   }
-  
-  //点击删除
+
   Delete = record => {
     this.props.dispatch({
       type: 'home/deleList',
       payload: record
     })
   }
-  
-  //表单数据回显
+
   Update = record => {
     this.props.dispatch({
       type: 'home/editData',
@@ -74,6 +69,8 @@ export default class Home extends Component {
       id: record.id
     })
   }
+
+
 
   render() {
     const columns = [
@@ -101,9 +98,7 @@ export default class Home extends Component {
                 return (
                   <div>
                     <Button onClick={() => this.Update(record)}>Update</Button>
-                    <Popconfirm title="确定删除吗?" onConfirm={() => this.Delete(record.id)}>
-                      <Button>Delete</Button>
-                    </Popconfirm>
+                    <Button onClick={() => this.Delete(record.id)}>Delete</Button>
                   </div>
                 )
               },

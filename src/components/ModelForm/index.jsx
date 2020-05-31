@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'dva'
 import { Form, Input, Modal, Button } from 'antd'
 
+
 export default @connect(({ home }) => ({
   editData: home.editData
 }))
-class ModelForm extends Component {
-  
+class ModelForm extends React.Component {
+
   onFinish = values => {
     this.props.handleOk(values)
-    values = ''
   }
 
   handleCancel = () => {
@@ -26,8 +26,9 @@ class ModelForm extends Component {
           width="65%"
           footer={null}
           onCancel={this.handleCancel}
+          destroyOnClose={true}
         >
-        <Form onFinish={this.onFinish}  initialValues={editData}>
+        <Form  onFinish={this.onFinish} initialValues={editData}>
             <Form.Item
               label="姓名"
               name="name"
@@ -50,9 +51,7 @@ class ModelForm extends Component {
               <Input />
             </Form.Item> 
             <Form.Item>
-              <Button type="primary" htmlType="submit" >
-                Submit
-              </Button>
+              <Button type="primary" htmlType="submit" >Submit</Button>
             </Form.Item>
           </Form>
         </Modal>
