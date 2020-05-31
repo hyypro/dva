@@ -7,9 +7,11 @@ export default @connect(({ home }) => ({
   editData: home.editData
 }))
 class ModelForm extends React.Component {
+  formRef = React.createRef()
 
   onFinish = values => {
     this.props.handleOk(values)
+    this.formRef.current.resetFields()
   }
 
   handleCancel = () => {
@@ -28,7 +30,7 @@ class ModelForm extends React.Component {
           onCancel={this.handleCancel}
           destroyOnClose={true}
         >
-        <Form  onFinish={this.onFinish} initialValues={editData}>
+        <Form  onFinish={this.onFinish} ref={this.formRef} initialValues={editData}>
             <Form.Item
               label="姓名"
               name="name"
